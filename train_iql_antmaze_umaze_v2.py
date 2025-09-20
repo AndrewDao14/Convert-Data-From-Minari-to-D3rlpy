@@ -4,6 +4,8 @@ from d3rlpy.dataset import MDPDataset
 from d3rlpy.algos import IQLConfig
 from d3rlpy.metrics.evaluators import EnvironmentEvaluator
 import gym
+
+#Flatten the Observation space of the environment so that it can be used for evaluating
 class FlattenAntMazeObs(gym.ObservationWrapper):
     def __init__(self, env):
         super().__init__(env)
@@ -94,5 +96,6 @@ model.fit(
     show_progress=True,
     evaluators={"environment": env_evaluator}
 )
+
 
 model.save_model("IQL_test_2.d3")
